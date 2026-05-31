@@ -24,7 +24,7 @@ npx setup-claude-statusline
 
 ```bash
 # 1. 克隆到 Claude Code 的 skills 目录
-git clone https://github.com/liupengbo/setup-statusline.git ~/.claude/skills/setup-statusline
+git clone https://github.com/liupengbo0726-star/setup-statusline.git ~/.claude/skills/setup-statusline
 
 # 2. 重启 Claude Code，然后运行：
 /setup-statusline
