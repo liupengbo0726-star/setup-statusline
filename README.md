@@ -15,10 +15,10 @@ deepseek-v4-pro[1m] | 12.5% | main | /home/project | default
 ### 方式一：npx 一键安装（推荐）
 
 ```bash
-npx setup-claude-statusline
+npx github:liupengbo0726-star/setup-statusline
 ```
 
-自动检测 Windows / macOS / Linux，完成配置后重启 Claude Code 即可。
+> 不需要先装什么，npx 会自动从 GitHub 拉取并执行。检测到 Windows 用 PowerShell，Linux/macOS 用 Bash，完成后重启 Claude Code 即可生效。
 
 ### 方式二：手动安装（Skill）
 
