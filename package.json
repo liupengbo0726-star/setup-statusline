@@ -1,0 +1,21 @@
+{
+  "name": "setup-claude-statusline",
+  "version": "1.0.0",
+  "description": "一键配置 Claude Code 状态栏，显示模型、上下文使用率、Git 分支、工作目录、输出样式",
+  "bin": {
+    "setup-claude-statusline": "./bin/setup.js"
+  },
+  "files": [
+    "bin/",
+    "scripts/"
+  ],
+  "repository": "github:liupengbo/setup-statusline",
+  "keywords": [
+    "claude-code",
+    "statusline",
+    "status-bar",
+    "cli",
+    "terminal"
+  ],
+  "license": "MIT"
+}
