@@ -13,10 +13,10 @@ description: >
 Install a custom, ANSI-colored status bar that shows five items at a glance:
 
 ```
-model-name | 12.5% | main | /home/project | markdown
+model-name | ███░░░░░░░ 12.5% | main | /home/project | markdown
 ```
 
-Each item has a distinct color so you can scan them quickly. Context percentage changes color based on usage level (green → yellow → red).
+Each item has a distinct color so you can scan them quickly. Context percentage changes color based on usage level (green → yellow → red). A 10-block progress bar (light blue `█` filled / `░` empty, rounded) gives a quick visual read on context usage.
 
 ## Supported platforms
 
@@ -89,7 +89,7 @@ Merge the new `statusLine` key into the existing settings (keep all other settin
 Tell the user:
 - What was installed and where
 - To restart Claude Code for the status bar to appear
-- What the status bar will look like: `model | context% | git-branch | cwd | output-style`
+- What the status bar will look like: `model | ███░░░░░░░ context% | git-branch | cwd | output-style`
 - Show which script was used (PowerShell or Bash)
 
 ## What the status bar displays
@@ -97,11 +97,12 @@ Tell the user:
 | Position | Field | Color | Example |
 |---|---|---|---|
 | 1 | Model display name | Cyan bold | `deepseek-v4-pro[1m]` |
-| 2 | Context usage % | Green / Yellow / Red | `12.5%` |
+| 2 | Progress bar + context % | Light blue bar, Green/Yellow/Red % | `█████░░░░░ 50%` |
 | 3 | Git branch | Magenta | `main` |
 | 4 | Working directory | Blue | `D:\桌面` |
 | 5 | Output style | Gray | `default` |
 
+Progress bar: 10 blocks, rounded (not floored). Already-used context = `█` (light blue), remaining = `░`. Falls back to `#` / `-` if terminal can't render Unicode.
 Context colors: ≤30% green, 30-70% yellow, >70% red.
 
 ## Troubleshooting
@@ -109,5 +110,6 @@ Context colors: ≤30% green, 30-70% yellow, >70% red.
 - **Nothing shows up**: Restart Claude Code completely (quit and re-open).
 - **"jq not found"** (Linux/macOS): Install with `brew install jq` (macOS) or `apt install jq` (Linux).
 - **"bc not found"** (Linux): `apt install bc` or `yum install bc`.
-- **Windows status bar doesn't render**: Known issue on some Windows setups. Try using Git Bash instead.
+- **Shows briefly then reverts to "Claude Code"**: The working directory contains non-ASCII characters (e.g. Chinese). The PowerShell script now sets `InputEncoding`/`OutputEncoding` to UTF-8 to fix this — make sure you have the latest version of the script.
+- **Progress bar shows garbled characters**: Terminal doesn't support Unicode. The script auto-falls back to ASCII `#`/`-` characters.
 - **Shows "no-branch"**: You're not inside a Git repository.
